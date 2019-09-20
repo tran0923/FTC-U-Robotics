@@ -13,17 +13,48 @@ public class TwoWeekTeleOp extends LinearOpMode {
         robot.init(this, hardwareMap, telemetry);
 
         //Left Stick
-        double left_y, left_x;
+        double leftY, leftX;
 
         //Right Stick
-        double right_y, right_x;
+        double rightY, rightX;
 
         //Triggers
-        double left_t, right_t;
+        double leftTrigger, rightTrigger;
+
+        //Claw Control
+        boolean claw;
 
         while (opModeIsActive()) {
-            left_y = -gamepad1.left_stick_y;
+            //Game pad input
+            leftY = -gamepad1.left_stick_y;
 
+            leftX = gamepad1.left_stick_x;
+
+            rightY = -gamepad1.right_stick_y;
+
+            leftTrigger = gamepad1.left_trigger;
+
+            rightTrigger = gamepad1.right_trigger;
+
+            claw = gamepad1.a;
+
+            //Drive Train Control
+            robot.frontLeftMotor.setPower(leftY + leftX + (rightTrigger - leftTrigger));
+            robot.frontRightMotor.setPower(leftY - leftX - (rightTrigger - leftTrigger));
+            robot.backLeftMotor.setPower(leftY - leftX - (rightTrigger - leftTrigger));
+            robot.backRightMotor.setPower(leftY + leftX - (rightTrigger - leftTrigger));
+
+            //Lift Control
+            robot.liftMotor.setPower(rightY);
+
+            //Claw Control
+            if (claw) {
+                robot.clawServoA.setPosition(0);
+                robot.clawServoB.setPosition(0);
+            } else {
+                robot.clawServoA.setPosition(90);
+                robot.clawServoB.setPosition(90);
+            }
         }
     }
 }

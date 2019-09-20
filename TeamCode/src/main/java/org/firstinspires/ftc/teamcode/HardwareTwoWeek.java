@@ -22,7 +22,8 @@ public class HardwareTwoWeek {
     public DcMotor liftMotor;
 
     //Claw Servo
-    public Servo clawServo;
+    public Servo clawServoA;
+    public Servo clawServoB;
 
     //Robot Classes
     public Telemetry localTelemetry;
@@ -49,7 +50,8 @@ public class HardwareTwoWeek {
         liftMotor = hwMap.get(DcMotor.class, "liftMotor");
 
         //Claw Servos
-        clawServo = hwMap.get(Servo.class, "clawServo");
+        clawServoA = hwMap.get(Servo.class, "clawServoA");
+        clawServoB = hwMap.get(Servo.class, "clawServoB");
     }
 
     //Here's where new robot control commands would go
