@@ -24,7 +24,11 @@ public class TwoWeekTeleOp extends LinearOpMode {
         //Claw Control
         boolean claw;
 
+        waitForStart();
+
         while (opModeIsActive()) {
+            telemetry.addLine()
+                    .addData("Robot Online","");
             //Game pad input
             leftY = -gamepad1.left_stick_y;
 
