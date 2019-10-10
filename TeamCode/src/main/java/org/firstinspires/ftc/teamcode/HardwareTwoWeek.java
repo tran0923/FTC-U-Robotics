@@ -54,5 +54,5 @@ public class HardwareTwoWeek {
         clawServoB = hwMap.get(Servo.class, "clawServoB");
     }
 
-    //Here's where new robot control commands would go
+    /*Here's where new robot control commands would go*/
 }
